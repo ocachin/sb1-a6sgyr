@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon';
+
+// Mock data for featured petitions
+const featuredPetitions = [
+	{ id: 1, title: "Save Local Park from Development", supporters: 15234, image: "https://source.unsplash.com/random/800x600?park" },
+	{ id: 2, title: "Increase Funding for Public Schools", supporters: 8765, image: "https://source.unsplash.com/random/800x600?school" },
+	{ id: 3, title: "Implement City-Wide Recycling Program", supporters: 12098, image: "https://source.unsplash.com/random/800x600?recycling" },
+];
+---
+
+<Layout title="E-Democracy Platform">
+	<section class="bg-red-600 text-white py-20">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-6">The world's platform for change</h1>
+			<p class="text-xl mb-8">Start a petition. Make a difference. Be the change you want to see.</p>
+			<a href="/start-a-petition" class="bg-white text-red-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300">Start a petition</a>
+		</div>
+	</section>
+
+	<section class="py-16">
+		<div class="container mx-auto px-4">
+			<h2 class="text-3xl font-bold mb-8 text-center">Featured Petitions</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				{featuredPetitions.map(petition => (
+					<div class="bg-white rounded-lg shadow-md overflow-hidden">
+						<img src={petition.image} alt={petition.title} class="w-full h-48 object-cover" />
+						<div class="p-6">
+							<h3 class="text-xl font-semibold mb-2">{petition.title}</h3>
+							<p class="text-gray-600 mb-4">{petition.supporters.toLocaleString()} supporters</p>
+							<a href={`/petition/${petition.id}`} class="text-red-600 font-semibold hover:underline">Learn More</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-gray-100 py-16">
+		<div class="container mx-auto px-4 text-center">
+			<h2 class="text-3xl font-bold mb-8">How It Works</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div>
+					<Icon name="mdi:pencil" class="w-16 h-16 mx-auto mb-4 text-red-600" />
+					<h3 class="text-xl font-semibold mb-2">Start a Petition</h3>
+					<p class="text-gray-600">Share your idea and tell your story to inspire change.</p>
+				</div>
+				<div>
+					<Icon name="mdi:account-group" class="w-16 h-16 mx-auto mb-4 text-red-600" />
+					<h3 class="text-xl font-semibold mb-2">Gather Supporters</h3>
+					<p class="text-gray-600">Spread the word and get others to join your cause.</p>
+				</div>
+				<div>
+					<Icon name="mdi:bullhorn" class="w-16 h-16 mx-auto mb-4 text-red-600" />
+					<h3 class="text-xl font-semibold mb-2">Create Change</h3>
+					<p class="text-gray-600">Work with decision-makers to find solutions and make an impact.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

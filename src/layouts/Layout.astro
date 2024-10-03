@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="E-Democracy Platform" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-gray-100">
+		<header class="bg-white shadow-md">
+			<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+				<a href="/" class="text-2xl font-bold text-red-600">E-Democracy</a>
+				<nav>
+					<ul class="flex space-x-6">
+						<li><a href="/start-a-petition" class="text-gray-700 hover:text-red-600">Start a petition</a></li>
+						<li><a href="/my-petitions" class="text-gray-700 hover:text-red-600">My petitions</a></li>
+						<li><a href="/browse" class="text-gray-700 hover:text-red-600">Browse</a></li>
+						<li><a href="/login" class="text-gray-700 hover:text-red-600">Login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="bg-gray-800 text-white mt-12 py-8">
+			<div class="container mx-auto px-4">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div>
+						<h3 class="text-lg font-semibold mb-4">About Us</h3>
+						<p>E-Democracy is a platform for people to start campaigns, mobilize supporters, and work with decision makers to drive solutions.</p>
+					</div>
+					<div>
+						<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+						<ul class="space-y-2">
+							<li><a href="/about" class="hover:text-red-400">About</a></li>
+							<li><a href="/impact" class="hover:text-red-400">Our Impact</a></li>
+							<li><a href="/team" class="hover:text-red-400">Team</a></li>
+							<li><a href="/careers" class="hover:text-red-400">Careers</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-lg font-semibold mb-4">Connect</h3>
+						<div class="flex space-x-4">
+							<a href="#" class="text-white hover:text-red-400"><Icon name="mdi:facebook" class="w-6 h-6" /></a>
+							<a href="#" class="text-white hover:text-red-400"><Icon name="mdi:twitter" class="w-6 h-6" /></a>
+							<a href="#" class="text-white hover:text-red-400"><Icon name="mdi:instagram" class="w-6 h-6" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon';
+
+// Mock user data
+const user = {
+	name: 'Jane Doe',
+	email: 'jane.doe@example.com',
+	joinDate: 'January 15, 2023',
+	proposalsSubmitted: 3,
+	votesParticipated: 27,
+};
+---
+
+<Layout title="Profile | E-Democracy Platform">
+	<h1 class="text-3xl font-bold mb-6">Your Profile</h1>
+	<div class="bg-white p-6 rounded-lg shadow">
+		<div class="flex items-center mb-4">
+			<Icon name="lucide:user" class="w-16 h-16 text-blue-500 mr-4" />
+			<div>
+				<h2 class="text-2xl font-semibold">{user.name}</h2>
+				<p class="text-gray-600">{user.email}</p>
+			</div>
+		</div>
+		<div class="border-t pt-4 mt-4">
+			<p><strong>Member since:</strong> {user.joinDate}</p>
+			<p><strong>Proposals submitted:</strong> {user.proposalsSubmitted}</p>
+			<p><strong>Votes participated:</strong> {user.votesParticipated}</p>
+		</div>
+		<div class="mt-6">
+			<a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+				<Icon name="lucide:settings" class="w-5 h-5 inline-block mr-2" />
+				Edit Profile
+			</a>
+		</div>
+	</div>
+</Layout>

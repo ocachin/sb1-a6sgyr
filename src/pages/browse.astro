@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Mock data for browsing petitions
+const petitions = [
+	{ id: 1, title: "Save Endangered Species in Local Forest", category: "Environment", supporters: 3456 },
+	{ id: 2, title: "Improve Road Safety Measures", category: "Transportation", supporters: 2189 },
+	{ id: 3, title: "Increase Funding for Mental Health Services", category: "Healthcare", supporters: 5678 },
+	{ id: 4, title: "Promote Renewable Energy in Our City", category: "Environment", supporters: 4321 },
+	{ id: 5, title: "Support Local Small Businesses", category: "Economy", supporters: 1987 },
+];
+---
+
+<Layout title="Browse Petitions | E-Democracy Platform">
+	<div class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold mb-6">Browse Petitions</h1>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{petitions.map(petition => (
+				<div class="bg-white rounded-lg shadow-md overflow-hidden">
+					<div class="p-6">
+						<h2 class="text-xl font-semibold mb-2">{petition.title}</h2>
+						<p class="text-gray-600 mb-4">Category: {petition.category}</p>
+						<p class="text-gray-700 mb-4">{petition.supporters.toLocaleString()} supporters</p>
+						<a href={`/petition/${petition.id}`} class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-700 transition duration-300">Learn More</a>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Mock data for user's petitions
+const userPetitions = [
+	{ id: 1, title: "Improve Local Public Transportation", supporters: 523, status: "Active" },
+	{ id: 2, title: "Plant More Trees in Urban Areas", supporters: 1089, status: "Successful" },
+	{ id: 3, title: "Reduce Plastic Waste in Our Community", supporters: 782, status: "Active" },
+];
+---
+
+<Layout title="My Petitions | E-Democracy Platform">
+	<div class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold mb-6">My Petitions</h1>
+		<div class="bg-white shadow-md rounded-lg overflow-hidden">
+			<table class="min-w-full">
+				<thead class="bg-gray-100">
+					<tr>
+						<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+						<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Supporters</th>
+						<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+						<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+					</tr>
+				</thead>
+				<tbody class="bg-white divide-y divide-gray-200">
+					{userPetitions.map(petition => (
+						<tr>
+							<td class="px-6 py-4 whitespace-nowrap">{petition.title}</td>
+							<td class="px-6 py-4 whitespace-nowrap">{petition.supporters}</td>
+							<td class="px-6 py-4 whitespace-nowrap">
+								<span class={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${petition.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}`}>
+									{petition.status}
+								</span>
+							</td>
+							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+								<a href={`/petition/${petition.id}`} class="text-red-600 hover:text-red-900">View</a>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</Layout>
